@@ -13,17 +13,44 @@
         <div id="content">
             <nav></nav>
             <section id="movie-tile-wrapper">
-                <figure id="movie1" class="movie-tile" onclick="showFilmDetails('movie1')">
-                    <img src="img/star-wars.jpg" alt="Movie Name">
-                    <figcaption>Movie Name <br> Date</figcaption>
-                </figure>
-                <div id="movie1-details-container" class="movie-details-container">
-                    <div class="movie-details-background" onclick="showFilmDetails('movie1')"></div>
-                    <section class="movie-details">
+                <?php
+                    $dsn = "sqlite:database.db";
 
-                    </section>
-                </div>
+                    try {    
+                        $pdo = new PDO($dsn);
+                    } catch (PDOException $e) {
+                        echo 'Connexion échouée : ' . $e->getMessage();
+                        die();
+                    }
+
+                    $pdo->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
+
+                    $sql = $pdo->prepare("SELECT * from userRecommandations where idUser = 2"); //TODO: mettre le vrai idUser, recupere sur la session
+                    $sql->execute();
+                    $sql->setFetchMode(PDO::FETCH_NUM);
+                
+                    foreach($sql->fetch() as $col => $movieId){
+                        if ($col == 0) {
+                            continue;
+                        }
+                        ?>
+                        
+                            <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('movie<?=$movieId?>')">
+                                <img src="img/star-wars.jpg" alt="Movie Name">
+                                <figcaption>Movie Name <br> Date</figcaption>
+                            </figure>
+                            <div id="movie<?=$movieId?>-details-container" class="movie-details-container">
+                                <div class="movie-details-background" onclick="showFilmDetails('movie<?=$movieId?>')"></div>
+                                <section class="movie-details">
+
+                                </section>
+                            </div>                        
+                        <?php
+                    }
+                ?>
             </section>
+
+            
         </div>
     </main>
     <footer>

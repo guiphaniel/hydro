@@ -11,15 +11,18 @@
     --darkGrey: 77, 77, 77;
     --borderRadius:20px;
 }
-*{
+
+*, *::after, *::before{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 header{
     background-color: #C4C4C4;
     display: flex;
     justify-content: space-between;
+    height: 90px;
 }
 header img{
     width: 300px;
