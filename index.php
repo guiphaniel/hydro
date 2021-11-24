@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="./css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydro - Acceuil</title>
 </head>
@@ -18,7 +19,7 @@
     </section>
     <section class="main-image">
         <h2>Un accès partout, tout le temps</h2>
-        <img src="./img/left_banniere.jpg" alt="">
+        <img src="./img/left_banniere.jpg" alt="semi banniere acceuil">
     </section>
     
     

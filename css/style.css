@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../font/Roboto/Roboto-Medium.ttf");
+           
+}
+:root{
+    --rouge:#ff5555;
+    --bleu:#5599FF;
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    background-color: #C4C4C4;
+    display: flex;
+    justify-content: space-between;
+}
+header img{
+    width: 300px;
+    margin: 10px;
+}
+header .accountButtons{
+    display: flex;
+    align-items: center;
+    
+    
+}
+header .accountButtons button{
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 60px;
+    padding-right: 60px;
+    border-radius: 20px;
+    border-style: none;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-family: "Roboto"; 
+    font-size: 24px;
+    color: white;
+}
+header .accountButtons button:hover{
+
+}
+header .accountButtons .inscription{
+    background-color:var(--rouge);
+}
+header .accountButtons .connexion{
+    background-color: var(--bleu);
+}
+
+.main-image{
+    
+    width: 100%;
+}
+.main-image img{
+    width: 100%;
+}
