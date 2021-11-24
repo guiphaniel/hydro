@@ -8,7 +8,7 @@
     --bleu:#5599FF;
     --lighGrey:#ececec;
     --grey:#C4C4C4;
-    --darkGrey:#4D4D4D;
+    --darkGrey: 77, 77, 77;
     --borderRadius:20px;
 }
 *{
@@ -54,10 +54,64 @@ header .accountButtons .connexion{
     background-color: var(--bleu);
 }
 
-.main-image{
-    
-    width: 100%;
+.main-image{    
+    width: 100%;    
 }
 .main-image img{
     width: 100%;
+}
+
+#movie-tile-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12em, 15vw));
+    justify-content: center;
+}
+
+.movie-tile {
+    overflow: hidden;
+    margin: 2em;
+    cursor: pointer;
+}
+
+.movie-tile img {
+    width: 100%;
+    border-radius: var(--borderRadius);
+}
+
+.movie-tile figcaption {
+    text-align: center;
+    padding: 1em 1em;
+}
+
+.movie-details-container {
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 90px);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all ease-in-out 0.2s;
+}
+
+.movie-details-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--darkGrey), 0.9);
+    cursor: pointer;
+}
+
+.movie-details {
+    width: 80%;
+    height: 80%;
+    z-index: 1;
+    background-color: var(--grey);
+    border-radius: var(--borderRadius);    
+}
+
+.show {
+    visibility: visible;
+    opacity: 1;
 }
