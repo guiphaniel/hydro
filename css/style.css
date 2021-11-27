@@ -75,7 +75,7 @@ header img, #menu-toogle {
     
 }
 
-#logo-with-text{
+header #logo-with-text{
     display: none;  
 }
 header .accountButtons button{
@@ -92,13 +92,105 @@ header .accountButtons button{
     font-size: 24px;
     color: white;
 }
+header .accountButtons button:hover{
+    
+    cursor: pointer;;
+}
 header .accountButtons .inscription{
     background-color:var(--rouge);
 }
-header .accountButtons .connexion{
-    background-color: var(--bleu);
+header .connexion{
+    background-color: var(--bleu)   !important  ;
+    color: white;
 }
 
+.modal {
+    
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition :opacity 0.4s,visibility 0.5s;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    max-height: ;
+    overflow-y: auto;
+    background-color: var(--grey);
+    border-radius: var(--borderRadius);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+
+  .modal-content .autoLog{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .modal-content button{
+    height: 45px;
+    margin-top: 20px;
+    border-style: none;
+    background-color: var(--lighGrey);
+    border-radius: var(--borderRadius);
+    font-size: 18px;
+  }
+  .modal-content .hl {
+    border-top: 1px solid black;
+    width: 50%;
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+    header form{
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    }
+    header form button{
+        width: 50%;
+        align-self: center;
+    }
+    header form input{
+        border-style: none;
+        border-radius: var(--borderRadius);
+        height: 45px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 15px;
+
+        margin-bottom: 10px;
+        background-color: var(--lighGrey);
+    }
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    align-self: flex-end;
+    width: min-content;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
 
 
 
@@ -177,6 +269,7 @@ footer a{
 
 
 @media (min-width: 800px) {
+    /*     HEADER     */
     header{
     background-color: #C4C4C4;
     display: flex;
@@ -200,9 +293,12 @@ footer a{
         margin-left: 15px;
         margin-right: 15px;
     }
+    header .accountButtons button:hover{
+        cursor: pointer;
+    }
 
     #logo-with-text{
-        display: block;
+        display: block !important;
         font-family: "Roboto";
     
     }
@@ -211,6 +307,17 @@ footer a{
     }
     #menu-toogle{
         display: none;
+    }
+
+    header .modal-content{
+        max-width: 570px;
+    }
+
+    /* END HEADER*/
+    
+
+    .main-image h1, h2{
+        font-size: 60px;
     }
     footer ul {
         flex-direction: row;

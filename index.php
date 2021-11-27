@@ -9,6 +9,9 @@
 </head>
 <body>
     <?php include "./modules/header.php" ?>
+
+
+
     <section class="main-image" id="first-section">
         <h1>Regardez des films avec Hydro</h1>
     </section>
