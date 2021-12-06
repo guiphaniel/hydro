@@ -44,6 +44,8 @@ if __name__ == '__main__':
         for (iid,_) in user_ratings:
             values= values+", " + str(iid)
         cur.execute("INSERT INTO userRecommandations VALUES("+values+");")
+        mysql_escape_string()
+
 
     con.commit()
     con.close()
