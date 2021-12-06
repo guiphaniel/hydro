@@ -1,6 +1,8 @@
+import csv
+
 try:
-    import csv
-    import os
+    import sys
+    sys.path.append(sys.argv[1] + "\lib\site-packages")
     from collections import defaultdict
     from surprise import Reader, Dataset, SVD, SVDpp
     import sqlite3
@@ -21,7 +23,15 @@ def get_top_n(predictions, n=10):
 
 
 if __name__ == '__main__':
-    file_path = "ratings.csv"
+
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    cur.execute("DROP TABLE IF EXISTS userRecommendations;")
+    cur.execute("DROP TABLE IF EXISTS movies")
+    cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
+    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
+
+    file_path = "csv/ratings.csv"
     reader = Reader(line_format='user item rating timestamp', sep=',')
     data = Dataset.load_from_file(file_path, reader=reader)
 
@@ -34,18 +44,19 @@ if __name__ == '__main__':
 
     top_n = get_top_n(predictions, 10)
 
-    con = sqlite3.connect("database.db")
-    cur = con.cursor()
-    cur.execute("DROP TABLE IF EXISTS userRecommandations;")
-    cur.execute("CREATE TABLE userRecommandations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
-
     for uid, user_ratings in top_n.items():
         values = str(uid)
-        for (iid,_) in user_ratings:
-            values= values+", " + str(iid)
-        cur.execute("INSERT INTO userRecommandations VALUES("+values+");")
-        mysql_escape_string()
+        for (iid, _) in user_ratings:
+            values = values + ", " + str(iid)
+        cur.execute("INSERT INTO userRecommendations VALUES(" + values + ");")
 
-
+    with open('csv/movies.csv', newline='', encoding="utf8") as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            print("INSERT INTO movies VALUES(?,?,?);",(row[0],row[1],row[2]))
+            if line_count > 0:
+                cur.execute("INSERT INTO movies VALUES(?,?,?);",(row[0],row[1],row[2]))
+            line_count+=1
     con.commit()
     con.close()
