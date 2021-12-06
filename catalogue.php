@@ -29,7 +29,7 @@
                     $sql->execute();
                     $sql->setFetchMode(PDO::FETCH_NUM);
                 
-                    foreach($sql->fetch() as $col => $movieId){
+                    foreach($sql->fetch() as $col => $movieId):
                         if ($col == 0) {
                             continue;
                         }
@@ -38,16 +38,22 @@
                             <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('movie<?=$movieId?>')">
                                 <img src="img/star-wars.jpg" alt="Movie Name">
                                 <figcaption>Movie Name <br> Date</figcaption>
-                            </figure>
-                            <div id="movie<?=$movieId?>-details-container" class="movie-details-container">
-                                <div class="movie-details-background" onclick="showFilmDetails('movie<?=$movieId?>')"></div>
-                                <section class="movie-details">
-
-                                </section>
-                            </div>                        
+                            </figure>                            
                         <?php
-                    }
+                    endforeach;
                 ?>
+                <div id="movie-details-container" class="movie-details-container">
+                    <div class="movie-details-background" onclick="hideFilmDetails()"></div>
+                    <section class="movie-details-content">
+                        <span class="close" onclick="hideFilmDetails()">&times;</span>
+                        <h2>Titre</h2>
+                        <div id="movie-description">
+                            <img src="#" alt="">
+                            <p>description</p>
+                        </div>
+                        <div id="actors"></div>
+                    </section>
+                </div>                        
             </section>
 
             

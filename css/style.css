@@ -16,6 +16,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Roboto"; 
 }
 
 header{
@@ -42,8 +43,7 @@ header .accountButtons button{
     border-radius: var(--borderRadius);
     border-style: none;
     margin-left: 15px;
-    margin-right: 15px;
-    font-family: "Roboto"; 
+    margin-right: 15px;    
     font-size: 24px;
     color: white;
 }
@@ -87,9 +87,10 @@ header .accountButtons .connexion{
 }
 
 .movie-details-container {
-    position: absolute;
-    width: 100%;
-    height: calc(100% - 90px);    
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,22 +100,50 @@ header .accountButtons .connexion{
 }
 
 .movie-details-background {
-    position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(var(--darkGrey), 0.9);
     cursor: pointer;
 }
 
-.movie-details {
+.movie-details-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
     width: 80%;
     height: 80%;
     z-index: 1;
     background-color: var(--grey);
     border-radius: var(--borderRadius);    
+    padding: 20px;
+}
+
+.movie-description{
+    display: flex;
+}
+
+.actors {
+    display: flex;
 }
 
 .show {
     visibility: visible;
     opacity: 1;
 }
+
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    align-self: flex-end;
+    width: min-content;
+    font-size: 28px;
+    font-weight: bold;
+    user-select: none;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
