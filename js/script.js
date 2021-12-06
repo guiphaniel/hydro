@@ -13,7 +13,17 @@ const IMG_URL = 'https://image.tmdb.org/t/p/w500/'
 //test();
 showMovies();
 
-
+function getMovie(url) {
+    return fetch(url).then(res => res.json()).then(data => { 
+        let movie = {title: null, release_date: null, poster_path: null, overview: null}
+        movie.title = data.results[0]['title']
+        movie.release_date = data.results[0]['release_date']
+        movie.poster_path = data.results[0]['poster_path']
+        movie.overview = data.results[0]['overview']        
+        return movie 
+    })  
+}
+ 
 function showMovies() {
     let movies = document.getElementsByClassName("movie-tile");
 
@@ -23,27 +33,14 @@ function showMovies() {
         let localTitle = "Star Wars"
         let year = 2010;
         let url = BASE_URL + API_KEY + '&' + 'query=' + localTitle + '&' + 'year=' + year;
-        
-        getMovie(id, url);
-        /*console.log(movieInfo['']);*/
-        /*
-        movie.innerHTML = `
-        <img src="${IMG_URL+movieInfo['poster_path']}" alt="${movieInfo['title']}">
-        <figcaption>${movieInfo['title']} <br> ${movieInfo['release_date']}</figcaption>
-        `;*/
+
+        getMovie(url).then(movieInfo => {
+            movie.innerHTML = `
+                <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
+                <figcaption>${movieInfo.title} <br> ${movieInfo.release_date}</figcaption>
+            `;
+        });
     }
-}
-
-function getMovie(id, url) {
-    let test;
-    fetch(url).then(res => res.json()).then(data => { 
-        test = data.results[0].poster_path;
-        updateMovie(id, test);
-    })  
-}
-
-function updateMovie(id, test) {
-    console.log(test);
 }
 
 function createObject(){
