@@ -16,3 +16,5 @@ function connectResultsDB(): ?PDO
     }
 }
 
+startScript("main.py");
+

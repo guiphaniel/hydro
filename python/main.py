@@ -1,5 +1,4 @@
 import csv
-
 try:
     import sys
     sys.path.append(sys.argv[1] + "\lib\site-packages")
@@ -29,7 +28,7 @@ if __name__ == '__main__':
     cur.execute("DROP TABLE IF EXISTS userRecommendations;")
     cur.execute("DROP TABLE IF EXISTS movies")
     cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
-    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
+    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
 
     file_path = "csv/ratings.csv"
     reader = Reader(line_format='user item rating timestamp', sep=',')
@@ -55,7 +54,13 @@ if __name__ == '__main__':
         line_count = 0
         for row in csv_reader:
             if line_count > 0:
-                cur.execute("INSERT INTO movies VALUES(?,?,?);",(row[0],row[1],row[2]))
+                date = row[1][len(row[1]) - 5:len(row[1]) - 1]
+                count = 0
+                while count!=len(row[1]) and row[1][count] != '(':
+                    count += 1
+                title = row[1][0:count - 1]
+                print(title + ", " + date)
+                cur.execute("INSERT INTO movies VALUES(?,?,?,?);",(row[0],title,date,row[2]))
             line_count+=1
     con.commit()
     con.close()
