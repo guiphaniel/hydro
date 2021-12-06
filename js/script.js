@@ -36,21 +36,10 @@ function showMovies() {
         getMovie(url).then(movieInfo => {
             movie.innerHTML = `
                 <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
-                <figcaption>${movieInfo.title} <br> ${movieInfo.release_date}</figcaption>
+                <figcaption>${movieInfo.title} <br> ${year}</figcaption>
             `;
         });
     }
 }
 
-function createObject(){
-    let o = {foo: null, bar: null};
-    o.foo = 5;
-    return o;
-}
-
-function test(){
-    let o = createObject();
-    o.bar = 1;
-    console.log(o.foo);
-    console.log(o.bar);
-}
+//new Date(movieInfo.release_date)
