@@ -10,7 +10,6 @@ const API_KEY = 'api_key=0cbdab6dfb9d5c3d8b7a3cf506e11b83'
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie?'
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/'
 
-//test();
 showMovies();
 
 function getMovie(url) {
