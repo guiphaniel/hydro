@@ -4,10 +4,11 @@
     <img id="logo-without-text" for="toogle" src="./img/LogoSombre.svg" alt="logo Hydro">
 
     <ul id="menu"class="accountButtons">
-        <li><a href="./header.php"><button class="inscription">Inscription</button></a></li>
-        <li><button id="connexion" class="connexion">Connexion</button></li>
+        <li><div id= "signUpBtn"class="button" onclick="show(modalSignUp)">Inscription</div></a></li>
+        <li><div id="signInBtn" class="button" onclick="show(modalSignIn)">Connexion</div></li>
     </ul>
-    <?php include "./modules/signIn.php" ?>
+    <?php include "./modules/sign_in.php" ;
+    include "./modules/sign_up.php"?>
 
     <script src="../js/script.js"></script>
 
