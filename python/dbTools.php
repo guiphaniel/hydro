@@ -1,10 +1,11 @@
 <?php
 
+
 function startScript(String $path){
     if(str_contains($path,".py"))
-        return shell_exec($path . " " . __DIR__);
+        return exec($path . " " . __DIR__);
     else
-        return shell_exec($path.".py");
+        return exec($path.".py ".__DIR__);
 }
 
 function connectResultsDB(): ?PDO
@@ -16,5 +17,5 @@ function connectResultsDB(): ?PDO
     }
 }
 
-startScript("main.py");
+startScript("resetMovieDB.py");
 

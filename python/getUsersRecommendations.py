@@ -39,10 +39,7 @@ if __name__ == '__main__':
     con = sqlite3.connect("database.db")
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS userRecommendations;")
-    cur.execute("DROP TABLE IF EXISTS movies")
     cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
-    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
-
 
     for uid, user_ratings in top_n.items():
         values = str(uid)
@@ -50,18 +47,5 @@ if __name__ == '__main__':
             values = values + ", " + str(iid)
         cur.execute("INSERT INTO userRecommendations VALUES(" + values + ");")
 
-    with open('csv/movies.csv', newline='', encoding="utf8") as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
-        for row in csv_reader:
-            if line_count > 0:
-                date = row[1][len(row[1]) - 5:len(row[1]) - 1]
-                count = 0
-                while count!=len(row[1]) and row[1][count] != '(':
-                    count += 1
-                title = row[1][0:count - 1]
-                print(title + ", " + date)
-                cur.execute("INSERT INTO movies VALUES(?,?,?,?);",(row[0],title,date,row[2]))
-            line_count+=1
     con.commit()
     con.close()
