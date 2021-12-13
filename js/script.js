@@ -1,16 +1,32 @@
-function showFilmDetails(movieid) {
+function showFilmDetails(title, year) {
     document.getElementById('movie-details-container').classList.add('show');
+
+    let content = document.getElementById('movie-details-content');
+        
+    let url = BASE_URL + API_KEY + '&' + 'query=' + title + '&' + 'year=' + year;
+
+    getMovie(url).then(movieInfo => {
+        content.innerHTML = ` 
+            <span class="close" onclick="closeFilmDetails('<?=$movieTitle?>', '<?=$movieYear?>')">&times;</span>
+            <h2>${movieInfo.title}</h2>
+            <h2>${year}</h2>
+            <div id="movie-description">
+                <img id="details-img" src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
+                <p>${movieInfo.overview}</p>
+            </div>
+            <div id="actors">
+            </div>
+        `;
+    });
 }
 
-function hideFilmDetails() {
+function closeFilmDetails() {
     document.getElementById('movie-details-container').classList.remove('show');
 }
 
 const API_KEY = 'api_key=0cbdab6dfb9d5c3d8b7a3cf506e11b83'
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie?'
 const IMG_URL = 'https://image.tmdb.org/t/p/w500/'
-
-showMovies();
 
 function getMovie(url) {
     return fetch(url).then(res => res.json()).then(data => { 
@@ -23,23 +39,18 @@ function getMovie(url) {
     })  
 }
  
-function showMovies() {
-    let movies = document.getElementsByClassName("movie-tile");
-
-    for (let movie of movies) {
-        let id = movie.id.substring(5); 
+function showMovie(htmlId, title, year) {
+    let movie = document.getElementById(htmlId);
         
-        let localTitle = "Star Wars"
-        let year = 2010;
-        let url = BASE_URL + API_KEY + '&' + 'query=' + localTitle + '&' + 'year=' + year;
+    let url = BASE_URL + API_KEY + '&' + 'query=' + title + '&' + 'year=' + year;
 
-        getMovie(url).then(movieInfo => {
-            movie.innerHTML = `
-                <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
-                <figcaption>${movieInfo.title} <br> ${year}</figcaption>
-            `;
-        });
-    }
+    getMovie(url).then(movieInfo => {
+        movie.innerHTML = ` 
+            <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
+            <figcaption>${movieInfo.title} <br> ${year}</figcaption>
+        `;
+    });
+
 }
 
 //new Date(movieInfo.release_date)
