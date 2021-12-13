@@ -15,7 +15,7 @@
             $_SESSION['errorSignUp']=null;
         }?>
         <div class="autoLog">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
         
         </div>

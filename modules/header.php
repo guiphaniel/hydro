@@ -7,11 +7,11 @@
     <ul id="menu"class="accountButtons">
         <?php 
         if(empty($_SESSION['user'])){
-            echo '<li><div id= "signUpBtn"class="button" onclick="show(modalSignUp)">Inscription</div></a></li>';
+            echo '<li><div id= "signUpBtn"class="button" onclick="show(modalSignUp)">Inscription</div></li>';
             echo '<li><div id="signInBtn" class="button" onclick="show(modalSignIn)">Connexion</div></li>';
         }
         else{
-            echo '<a href="./processing/process_sign_out.php"><li><div id="signOutBtn" class="button">Deconnexion</div></li></a>';
+            echo '<li><a  id= "signOutBtn" class="button" href="./processing/process_sign_out.php" onclick="signOut();">Deconnexion</a></li>';
         }
         ?>
         
