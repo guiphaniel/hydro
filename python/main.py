@@ -23,13 +23,6 @@ def get_top_n(predictions, n=10):
 
 if __name__ == '__main__':
 
-    con = sqlite3.connect("database.db")
-    cur = con.cursor()
-    cur.execute("DROP TABLE IF EXISTS userRecommendations;")
-    cur.execute("DROP TABLE IF EXISTS movies")
-    cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
-    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
-
     file_path = "csv/ratings.csv"
     reader = Reader(line_format='user item rating timestamp', sep=',')
     data = Dataset.load_from_file(file_path, reader=reader)
@@ -42,6 +35,14 @@ if __name__ == '__main__':
     predictions = algo.test(testset)
 
     top_n = get_top_n(predictions, 10)
+
+    con = sqlite3.connect("database.db")
+    cur = con.cursor()
+    cur.execute("DROP TABLE IF EXISTS userRecommendations;")
+    cur.execute("DROP TABLE IF EXISTS movies")
+    cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
+    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255),  CONSTRAINT PK_userRecommandation PRIMARY KEY (idMovie));")
+
 
     for uid, user_ratings in top_n.items():
         values = str(uid)
