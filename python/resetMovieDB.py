@@ -1,5 +1,5 @@
+import csv
 try:
-    import csv
     import sys
     import sqlite3
 except:
@@ -21,11 +21,11 @@ if __name__ == '__main__':
                 count = 0
                 while count!=len(row[1]) and row[1][count] != '(':
                     count += 1
-                if row[1][count-6:count-1]==", The" :
+                if row[1][count-6:count-1]==", The" or row[1][count-6:count-1]==", Les" :
                     title = row[1][0:count-6]
                 elif row[1][count-4:count-1]==", A" :
                     title = row[1][0:count-4]
-                elif row[1][count-5:count-1]==", An" :
+                elif row[1][count-5:count-1]==", An" or row[1][count-5:count-1]==", Le" or row[1][count-5:count-1]==", La":
                     title = row[1][0:count-5]
                 else:
                     title = row[1][0:count - 1]
