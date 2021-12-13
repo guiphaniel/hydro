@@ -13,15 +13,15 @@
             $_SESSION['errorSignIn']=null;
         }?>
         <div class="autoLog">
-            <button>Se connecter avec Google</button>
-            <button>Se connecter avec Facebook</button>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         
         </div>
         <div class="hl"></div>
         <form action="./processing/process_sign_in.php" method="POST">
             <label for="username">Identifiant</label>
-            <input type="text" name="username" id="username">
+            <input type="text" autocomplete="username" name="username" id="sign-in-username">
             <label for="password">Mot de passe</label>
-            <input type="password" name="password" id="password">
+            <input type="password" autocomplete="current-password" name="password" id="sign-in-password">
             <button class="connexion" type="submit">Connexion</button>
         </form>
     </div>

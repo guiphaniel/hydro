@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-signin-client_id" content="7221840242-8dp6ko4h3o24ut7it8fnqagip6ku3oet.apps.googleusercontent.com">
     <link rel="stylesheet" href="./css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hydro - Acceuil</title>
+    <title>Hydro - Accueil</title>
 </head>
 <body>
     <?php include "./modules/header.php" ?>
@@ -28,6 +29,7 @@
     <?php include "./modules/footer.php" ?>
 
     
-    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
+
 </html>

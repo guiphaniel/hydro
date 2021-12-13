@@ -96,16 +96,19 @@ header .accountButtons button:hover{
     
     cursor: pointer;;
 }
+
 #signUpBtn, .inscription {
     background-color:var(--rouge) !important;
     color: white;
 }
 
-#signInBtn, .connexion{
+#signInBtn, .connexion, #signOutBtn{
     background-color: var(--bleu)   !important  ;
     color: white;
 }
-
+header a{
+    text-decoration: none;
+}
 .modal {
     
     position: fixed; /* Stay in place */
@@ -154,7 +157,10 @@ header .accountButtons button:hover{
     flex-direction: column;
     width: 80%;
   }
-
+  .autoLog{
+    align-items: center;
+    
+    }
   .modal-content button{
     height: 45px;
     margin-top: 20px;
