@@ -95,7 +95,11 @@ header .accountButtons .button{
 }
 header .accountButtons button:hover{
     
-    cursor: pointer;;
+    cursor: pointer;
+}
+
+header .accountButtons .button:hover, button:hover{
+    cursor: pointer;
 }
 
 #signUpBtn, .inscription {
@@ -412,9 +416,6 @@ footer a{
 
     }
     
-    header .accountButtons .button:hover, button:hover{
-        cursor: pointer;
-    }
     header .accountButtons #signInBtn{
         margin-left: 20px;
     }
