@@ -19,48 +19,264 @@
     font-family: "Roboto"; 
 }
 
+
+@keyframes checked-anim {
+    50% {
+        width: 3000px;
+        height: 3000px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes not-checked-anim {
+    0% {
+        width: 3000px;
+        height: 3000px;
+    }
+}
 header{
-    background-color: #C4C4C4;
-    display: flex;
-    justify-content: space-between;
-    height: 90px;
+    background-color: var(--grey);
+    min-height: 90px;
+    justify-content: center;
 }
-header img{
-    width: 300px;
-    margin: 10px;
+#menu-toogle:not(:checked) ~.accountButtons{
+    height: 0;
+
+    visibility: hidden;
+    opacity: 0;
+    
+
+    
 }
-header .accountButtons{
+#menu-toogle{
+    
+    position: absolute;
+    width: 90px;
+    opacity: 0;
+}
+
+.accountButtons{
     display: flex;
+    flex-direction: column;
     align-items: center;
+    list-style: none;
+    visibility: visible;
+    opacity: 1;
+    width: 100vw;
+    height: 200px;
+    transition:opacity 1s, height 1s, visibility 1s;
     
     
 }
-header .accountButtons button{
+header img, #menu-toogle {
+    height: 70px;
+    margin: 10px;
+    
+}
+
+header #logo-with-text{
+    display: none;  
+}
+header .accountButtons .button{
+    
     padding-top: 13px;
     padding-bottom: 13px;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
     border-radius: var(--borderRadius);
     border-style: none;
-    margin-left: 15px;
-    margin-right: 15px;    
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: "Roboto"; 
     font-size: 24px;
     color: white;
 }
 header .accountButtons button:hover{
-
-}
-header .accountButtons .inscription{
-    background-color:var(--rouge);
-}
-header .accountButtons .connexion{
-    background-color: var(--bleu);
+    
+    cursor: pointer;;
 }
 
-.main-image{    
-    width: 100%;    
+#signUpBtn, .inscription {
+    background-color:var(--rouge) !important;
+    color: white;
 }
-.main-image img{
+
+#signInBtn, .connexion, #signOutBtn{
+    background-color: var(--bleu)   !important  ;
+    color: white;
+}
+header a{
+    text-decoration: none;
+}
+.modal {
+    
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    transition :opacity 0.4s,visibility 0.5s;
+  }
+  .show{
+    visibility:visible;
+    opacity:1;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    overflow-y: auto;
+    background-color: var(--grey);
+    border-radius: var(--borderRadius);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  .modal-content .errorBox{
+      background-color: #ff3c3c4b;
+      color:  black;
+      padding: 20px;
+      border-radius: var(--borderRadius);
+  }
+  .modal-content .errorBox h2{
+      font-size: 15px;
+  }
+  .modal-content .autoLog{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .autoLog{
+    align-items: center;
+    
+    }
+  .modal-content button{
+    height: 45px;
+    margin-top: 20px;
+    border-style: none;
+    background-color: var(--lighGrey);
+    border-radius: var(--borderRadius);
+    font-size: 18px;
+  }
+  .modal-content .hl {
+    border-top: 1px solid black;
+    width: 50%;
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+    header form{
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    }
+    header form button{
+        width: 50%;
+        align-self: center;
+    }
+    header form input{
+        border-style: none;
+        border-radius: var(--borderRadius);
+        height: 45px;
+        padding-left: 20px;
+        padding-right: 20px;
+        font-size: 15px;
+
+        margin-bottom: 10px;
+        background-color: var(--lighGrey);
+    }
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    align-self: flex-end;
+    width: min-content;
+    font-size: 28px;
+    user-select: none;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+
+
+
+
+.main-image{
+    
+    height: 100vh;
+    max-height: 700px;
+    font-family: "Roboto";
+    color: white;
+}
+.main-image h1, .main-image h2{
+    text-align: center;
+    padding-top: 100px;
+    font-size: 2em;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.main-image p{
+    margin-left: 2%;
+    margin-right: 2%;
+    padding-top: 20px;
+}
+
+
+#first-section{
+    background-image: url("../img/banniere.jpg");
+}
+#second-section{
+    background-color: var(--darkGrey);
+}
+#third-section{
+    background-image: url("../img/left_banniere.jpg");
+}
+
+footer{
+    padding: 10px;
+    background-color: var(--grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+footer img{
+    width: 70px;
+    margin-bottom: 10px;
+
+}
+footer ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+footer ul li{
     width: 100%;
 }
 
@@ -192,4 +408,69 @@ header .accountButtons .connexion{
     color: #000;
     text-decoration: none;
     cursor: pointer;
-  }
+    text-align: center;
+    padding-top: 10px;
+}
+footer a{
+    text-decoration: none;
+    color:var(--darkGrey);
+
+
+}
+
+
+
+@media (min-width: 800px) {
+    /*     HEADER     */
+    header{
+    background-color: #C4C4C4;
+    display: flex;
+    transition: none;
+    justify-content: space-between;
+    }
+
+    .accountButtons{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        flex-direction: row;
+        visibility: visible !important;
+        
+        opacity: 1 !important;
+        height: 90px !important;
+        transition: none;
+
+    }
+    
+    header .accountButtons .button:hover, button:hover{
+        cursor: pointer;
+    }
+    header .accountButtons #signInBtn{
+        margin-left: 20px;
+    }
+    #logo-with-text{
+        display: block !important;
+        font-family: "Roboto";
+    
+    }
+    #logo-without-text{
+        display: none;
+    }
+    #menu-toogle{
+        display: none;
+    }
+
+    header .modal-content{
+        max-width: 570px;
+    }
+
+    /* END HEADER*/
+    
+
+    .main-image h1, h2{
+        font-size: 60px;
+    }
+    footer ul {
+        flex-direction: row;
+    }
+}
