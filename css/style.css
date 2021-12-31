@@ -8,11 +8,10 @@
     --bleu:#5599FF;
     --lighGrey:#ececec;
     --grey:#C4C4C4;
-    --darkGrey: 77, 77, 77;
+    --darkGrey:#4D4D4D;
     --borderRadius:20px;
 }
-
-*, *::after, *::before{
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
