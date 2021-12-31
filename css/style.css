@@ -112,116 +112,91 @@ header a{
 }
 .modal {
     
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    visibility: hidden;
-    opacity: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    transition :opacity 0.4s,visibility 0.5s;
-  }
-  .show{
-    visibility:visible;
-    opacity:1;
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    overflow-y: auto;
-    background-color: var(--grey);
-    border-radius: var(--borderRadius);
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+left: 0;
+top: 0;
+visibility: hidden;
+opacity: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+transition :opacity 0.4s,visibility 0.5s;
+}
+
+.show{
+visibility:visible;
+opacity:1;
+}
+
+/* Modal Content */
+.modal-content {
+overflow-y: auto;
+background-color: var(--grey);
+border-radius: var(--borderRadius);
+margin: auto;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
+}
+.modal-content .errorBox{
+    background-color: #ff3c3c4b;
+    color:  black;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  .modal-content .errorBox{
-      background-color: #ff3c3c4b;
-      color:  black;
-      padding: 20px;
-      border-radius: var(--borderRadius);
-  }
-  .modal-content .errorBox h2{
-      font-size: 15px;
-  }
-  .modal-content .autoLog{
+    border-radius: var(--borderRadius);
+}
+.modal-content .errorBox h2{
+    font-size: 15px;
+}
+.modal-content .autoLog{
+display: flex;
+flex-direction: column;
+width: 80%;
+}
+.autoLog{
+align-items: center;
+
+}
+.modal-content button{
+height: 45px;
+margin-top: 20px;
+border-style: none;
+background-color: var(--lighGrey);
+border-radius: var(--borderRadius);
+font-size: 18px;
+}
+.modal-content .hl {
+border-top: 1px solid black;
+width: 50%;
+margin-top:20px;
+margin-bottom: 20px;
+}
+header form{
     display: flex;
     flex-direction: column;
     width: 80%;
-  }
-  .autoLog{
-    align-items: center;
-    
-    }
-  .modal-content button{
-    height: 45px;
-    margin-top: 20px;
-    border-style: none;
-    background-color: var(--lighGrey);
-    border-radius: var(--borderRadius);
-    font-size: 18px;
-  }
-  .modal-content .hl {
-    border-top: 1px solid black;
+}
+header form button{
     width: 50%;
-    margin-top:20px;
-    margin-bottom: 20px;
-  }
-    header form{
-      display: flex;
-      flex-direction: column;
-      width: 80%;
-    }
-    header form button{
-        width: 50%;
-        align-self: center;
-    }
-    header form input{
-        border-style: none;
-        border-radius: var(--borderRadius);
-        height: 45px;
-        padding-left: 20px;
-        padding-right: 20px;
-        font-size: 15px;
+    align-self: center;
+}
+header form input{
+    border-style: none;
+    border-radius: var(--borderRadius);
+    height: 45px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 15px;
 
-        margin-bottom: 10px;
-        background-color: var(--lighGrey);
-    }
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    align-self: flex-end;
-    width: min-content;
-    font-size: 28px;
-    user-select: none;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-
-
-
-
-
-
-
-
-
+    margin-bottom: 10px;
+    background-color: var(--lighGrey);
+}
 
 .main-image{
     
@@ -317,7 +292,7 @@ footer ul li{
 #movie-details-background {
     width: 100%;
     height: 100%;
-    background-color: rgba(var(--darkGrey), 0.9);
+    background-color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
 }
 
@@ -392,32 +367,28 @@ footer ul li{
     color: var(--rouge);
 }
 
-  /* The Close Button */
-  .close {
+/* The Close Button */
+.close {
     color: #aaaaaa;
     align-self: flex-end;
     width: min-content;
     font-size: 28px;
     font-weight: bold;
     user-select: none;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
     text-align: center;
-    padding-top: 10px;
-}
+    }
+
 footer a{
     text-decoration: none;
     color:var(--darkGrey);
-
-
 }
-
-
 
 @media (min-width: 800px) {
     /*     HEADER     */
