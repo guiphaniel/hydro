@@ -23,7 +23,7 @@
                         echo 'Connexion échouée : ' . $e->getMessage();
                         die();
                     }
-
+                    
                     $pdo->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
 
                     $sql = $pdo->prepare("SELECT * from userRecommendations where idUser = 2"); //TODO: mettre le vrai idUser, recupere sur la session
