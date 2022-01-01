@@ -11,9 +11,8 @@ function showFilmDetails(title, year, genres) {
     let url = BASE_URL + API_KEY + '&' + 'query=' + title + '&' + 'year=' + year;
 
     //TODO: initialiser le nbStars à la moyenne du film
-    let actors = getMovie(url).then(movieInfo => {
-        //TODO: recuperer les acteurs
-        
+    //on imbrique les then car on ne peut pas modifier de variable externe ni faire de return dedans
+    getMovie(url).then(movieInfo => {        
         getCredits(movieInfo.id).then(credits => {
             let actorsHTML = ""
             try {
@@ -27,7 +26,7 @@ function showFilmDetails(title, year, genres) {
                         `
                 }
             } catch(error) {
-
+                //il y a moins de 10 acteurs
             } finally {
                 content.innerHTML = ` 
             <span class="close" onclick="closeFilmDetails()">&times;</span>
