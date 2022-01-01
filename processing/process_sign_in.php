@@ -23,11 +23,10 @@
         header("location: ../index.php");
         exit();
     }
-    
     if($user&& password_verify($_POST['password'],$user['password'])){
         $_SESSION['user']['id']=$user['id'];
         $_SESSION['user']['username']=$user['username'];
-        header("location: ../index.php");
+        header("location: ../catalogue.php");
         exit();
         
     }
