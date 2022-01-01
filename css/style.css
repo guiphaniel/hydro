@@ -333,6 +333,7 @@ footer ul li{
 #details{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 #genres {
