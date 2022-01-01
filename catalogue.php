@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,8 +27,10 @@
                     
                     $pdo->setAttribute(PDO::ATTR_ERRMODE , PDO::ERRMODE_EXCEPTION );
 
-                    $sql = $pdo->prepare("SELECT * from userRecommendations where idUser = 2"); //TODO: mettre le vrai idUser, recupere sur la session
-                    $sql->execute();
+                    $sql = $pdo->prepare("SELECT * from userRecommendations where idUser = :id"); //TODO: mettre le vrai idUser, recupere sur la session
+                    $sql->execute([
+                        "id" => $_SESSION['user']['id']
+                    ]);
                     $sql->setFetchMode(PDO::FETCH_NUM);
                 
                     foreach($sql->fetch() as $col => $movieId):
