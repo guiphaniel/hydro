@@ -21,7 +21,7 @@
         </div>
         <div class="hl"></div>
         <form action="./processing/process_sign_up.php" method="post">
-            <label for="username">Identifiant</label>
+            <label for="username">Pseudo</label>
             <input type="text" autocomplete="username" name="username" id="username">
             <label for="email">Adresse mail</label>
             <input type="email" autocomplete="email" name="email" id="email">
