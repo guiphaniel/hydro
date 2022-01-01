@@ -18,7 +18,7 @@
         </div>
         <div class="hl"></div>
         <form action="./processing/process_sign_in.php" method="POST">
-            <label for="username">Identifiant</label>
+            <label for="username">Pseudo</label>
             <input type="text" autocomplete="username" name="username" id="sign-in-username">
             <label for="password">Mot de passe</label>
             <input type="password" autocomplete="current-password" name="password" id="sign-in-password">
