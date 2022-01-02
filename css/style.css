@@ -387,6 +387,11 @@ footer ul li{
     display: flex;
     height: 1.5em;
     margin-bottom: 1em;
+    align-items: center;
+}
+
+#rate {
+    margin-right: 1em;
 }
 
 .star-outer {
