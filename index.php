@@ -1,4 +1,10 @@
-<?php session_start() ?>
+<?php 
+    session_start();
+    if(isset($_SESSION['user'])) {
+        header("Location: catalogue.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
