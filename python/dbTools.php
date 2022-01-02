@@ -1,11 +1,43 @@
 <?php
 
+function startUsersRecommendations(){
+    $cmd = "getUsersRecommendations.py " .__DIR__;
+    if (str_starts_with(php_uname(), "Windows")){
+        pclose(popen("start /B ". $cmd, "r"));
+    }
+    else {
+        exec($cmd . " > /dev/null &");
+    }
+}
 
-function startScript(String $path){
-    if(str_contains($path,".py"))
-        return exec($path . " " . __DIR__);
-    else
-        return exec($path.".py ".__DIR__);
+function startResetMovieDB(){
+    $cmd = "resetMovieDB.py " .__DIR__;
+    if (str_starts_with(php_uname(), "Windows")){
+        pclose(popen("start /B ". $cmd, "r"));
+    }
+    else {
+        exec($cmd . " > /dev/null &");
+    }
+}
+
+function startComputeAverageRatings(){
+    $cmd = "computeAverageRatings.py " .__DIR__;
+    if (str_starts_with(php_uname(), "Windows")){
+        pclose(popen("start /B ". $cmd, "r"));
+    }
+    else {
+        exec($cmd . " > /dev/null &");
+    }
+}
+
+function startResetDBRatings(){
+    $cmd = "resetRatingsDB.py " .__DIR__;
+    if (str_starts_with(php_uname(), "Windows")){
+        pclose(popen("start /B ". $cmd, "r"));
+    }
+    else {
+        exec($cmd . " > /dev/null &");
+    }
 }
 
 function connectResultsDB(): ?PDO
@@ -17,5 +49,7 @@ function connectResultsDB(): ?PDO
     }
 }
 
-startScript("resetMovieDB.py");
-
+startResetDBRatings();
+startResetMovieDB();
+startUsersRecommendations();
+startComputeAverageRatings();
