@@ -21,14 +21,14 @@
         </div>
         <div class="hl"></div>
         <form action="./processing/process_sign_up.php" method="post">
-            <label for="username">Pseudo</label>
-            <input type="text" autocomplete="username" name="username" id="username">
+            <label for="username" >Pseudo</label>
+            <input type="text"  name="username" id="username" required>
             <label for="email">Adresse mail</label>
-            <input type="email" autocomplete="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
             <label for="password">Mot de passe</label>
-            <input type="password" autocomplete="new-password" name="password" id="password">
+            <input type="password"  name="password" id="password" required>
             <label for="checkPassword">Confirmer le mot de passe</label>
-            <input type="password" autocomplete="new-password" name="checkPassword" id="checkPassword">
+            <input type="password" name="checkPassword" id="checkPassword" required>
             <button class="inscription" type="submit">Inscription</button>
         </form>
     </div>

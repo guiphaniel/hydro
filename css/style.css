@@ -59,13 +59,14 @@ header{
 
 .accountButtons{
     display: flex;
+
     flex-direction: column;
     align-items: center;
     list-style: none;
     visibility: visible;
     opacity: 1;
     width: 100vw;
-    height: 200px;
+    height: 350px;
     transition:opacity 1s, height 1s, visibility 1s;
     
     
@@ -80,7 +81,8 @@ header #logo-with-text{
     display: none;  
 }
 header .accountButtons .button{
-    
+    min-width: 219px;
+    text-align: center;
     padding-top: 13px;
     padding-bottom: 13px;
     padding-left: 40px;
@@ -106,7 +108,10 @@ header .accountButtons .button:hover, button:hover{
     background-color:var(--rouge) !important;
     color: white;
 }
-
+#homeBtn, #catalogueBtn{
+    background-color:var(--darkGrey) !important;
+    color: white;
+}
 #signInBtn, .connexion, #signOutBtn{
     background-color: var(--bleu)   !important  ;
     color: white;
@@ -256,6 +261,7 @@ footer ul{
 }
 footer ul li{
     width: 100%;
+    text-align: center;
 }
 
 #movie-tile-wrapper {
@@ -446,6 +452,9 @@ footer a{
     
     header .accountButtons #signInBtn{
         margin-left: 20px;
+    }
+    #homeBtn, #catalogueBtn{
+        display: none;
     }
     #logo-with-text{
         display: block !important;
