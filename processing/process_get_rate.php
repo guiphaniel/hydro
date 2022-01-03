@@ -1,5 +1,6 @@
 <?php
     if(!isset($_POST["idMovie"])) {
+        http_response_code(406);
         header("location: ../catalogue.php");
         exit();
     }
@@ -10,6 +11,7 @@
     $sql->execute([
         "idMovie" => $_POST["idMovie"]
     ]);
-
+    $sql->setFetchMode(PDO::FETCH_NUM);
     $rating = $sql->fetch();
-    exit($rating);
+    
+    exit($rating[0]);
