@@ -389,11 +389,14 @@ footer ul li{
 }
 
 #stars {
-    width: 10em;
     display: flex;
     height: 1.5em;
     margin-bottom: 1em;
     align-items: center;
+}
+
+.star {
+    height: 100%;
 }
 
 #avg-rating {
