@@ -36,7 +36,7 @@ if __name__ == '__main__':
 
     top_n = get_top_n(predictions, 10)
 
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect("../database.db")
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS userRecommendations;")
     cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")

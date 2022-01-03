@@ -8,7 +8,7 @@ except:
     exit()
 
 if __name__ == '__main__':
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect("../database.db")
     cur = con.cursor()
     data = pd.read_csv('csv/ratings.csv', header=None)
     mean = data.groupby(1)[2].mean()
