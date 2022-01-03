@@ -1,5 +1,5 @@
 <?php
-$dsn = 'sqlite:database.db';
+$dsn = "sqlite:" .  __DIR__ . "/../database.db";
         try {    
             $pdo = new PDO($dsn);
         } catch (PDOException $e) {
