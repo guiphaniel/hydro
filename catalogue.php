@@ -40,7 +40,7 @@
                         $movieYear = $result['year'];
                         $movieGenres = $result['genres'];                       
                         ?>
-                            <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=$movieTitle?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
+                            <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=addslashes($movieTitle)?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
                                 <img src="img/default-illustration.jpg" alt="<?=$movieTitle?>">
                                 <figcaption><?=$movieTitle?> <br> <?=$movieYear?></figcaption>
                             </figure>   
