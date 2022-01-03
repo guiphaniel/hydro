@@ -7,7 +7,7 @@ except:
     exit()
 
 if __name__ == '__main__':
-    con = sqlite3.connect("database.db")
+    con = sqlite3.connect("../database.db")
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS movies")
     cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255), rating float, CONSTRAINT PK_movies PRIMARY KEY (idMovie));")
