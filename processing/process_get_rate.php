@@ -7,7 +7,7 @@
 
     include "../include/start-db.php";
 
-    $sql = $pdo->prepare("SELECT AVG(rating) from ratings where idMovie = :idMovie"); //TODO: mettre la bonne table
+    $sql = $pdo->prepare("SELECT AVG(rating) from ratings where idMovie = :idMovie");
     $sql->execute([
         "idMovie" => $_POST["idMovie"]
     ]);
