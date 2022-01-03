@@ -10,7 +10,7 @@ if __name__ == '__main__':
     con = sqlite3.connect("database.db")
     cur = con.cursor()
     cur.execute("DROP TABLE IF EXISTS movies")
-    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255),  CONSTRAINT PK_movies PRIMARY KEY (idMovie));")
+    cur.execute("CREATE TABLE movies (idMovie int, title varchar(255), year varchar(4), genres varchar(255), rating float, CONSTRAINT PK_movies PRIMARY KEY (idMovie));")
 
     with open('csv/movies.csv', newline='', encoding="utf8") as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -29,9 +29,7 @@ if __name__ == '__main__':
                     title = row[1][0:count-5]
                 else:
                     title = row[1][0:count - 1]
-
-                print(title + ", " + date)
-                cur.execute("INSERT INTO movies VALUES(?,?,?,?);",(row[0],title,date,row[2]))
+                cur.execute("INSERT INTO movies VALUES(?,?,?,?,?);",(row[0],title,date,row[2],0.0))
             line_count+=1
     con.commit()
     con.close()

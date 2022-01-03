@@ -176,10 +176,16 @@ window.onclick = function(event) {
     }
 }
 function signOut() {
-    let auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-    });
-    auth2.disconnect();
+    try {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        });
+        auth2.disconnect();
+    } catch (error) {
+        
+    }
+    document.location.href="../processing/process_sign_out.php"
+    
   }
 
 function onSignIn(googleUser) {
@@ -195,5 +201,5 @@ function onSignIn(googleUser) {
     console.log('Signed in as: ' + xhr.responseText);
     };
     xhr.send('idtoken='+id_token);
-    
+    document.location.href="../catalogue.php"
 };
