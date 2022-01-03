@@ -70,6 +70,7 @@ function showFilmDetails(idMovie, title, year, genres) {
                         </div>
                     </div> 
                 `;
+                    updateUserRating(idMovie);
                     }
                 });
             });
@@ -119,8 +120,7 @@ function showMovie(htmlId, title, year) {
     });
 }
 
-
-function saveRating(starID, idMovie) {
+function setUserRating(starID) { //onclick, set rating and display it
     if (starID < nbStars) {
         for (let index = nbStars; index > starID; index--) {
             document.getElementById('star-' + index).classList.remove("star-is-checked");
@@ -134,9 +134,30 @@ function saveRating(starID, idMovie) {
     }
 
     nbStars = starID
+}
+
+function updateUserRating(idMovie){ //retrieve the user rating from db, and display it
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', '../processing/process_get_user_rate.php');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            rating = parseFloat(xhr.responseText).toFixed(0);
+            setUserRating(rating);
+        } else {
+            alert('An error occurred!');
+        }
+    };
+
+    let parameters = 'idMovie=' + window.encodeURIComponent(idMovie);
+    xhr.send(parameters);
+}
+
+function saveRating(starID, idMovie) {
+    setUserRating(starID);
 
     //recupération de la note moyenne
-    let rating = nbStars;
+    let rating = starID;
     let xhr = new XMLHttpRequest();
     xhr.open('POST', '../processing/process_save_rate.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
