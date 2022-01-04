@@ -59,7 +59,7 @@
                             <?php
                         endforeach;
                     } else {
-                        echo "<h3>Nous sommes désolé, nous ne disposons pas de ce film, essayez en un autre ! ^^<h3>";
+                        echo '<h3 id="movie-not-found">Nous sommes désolés, nous ne disposons pas de ce film, essayez d\'en chercher un autre ! ^^</h3>';
                     }
                 ?>
                 <div id="movie-details-container" class="movie-details-container">
