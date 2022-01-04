@@ -95,6 +95,12 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--rouge) !important;
+    color: white;
+}
+
+#movie-not-found {
+    text-align: center;
 }
 
 header img, #menu-toogle {
@@ -139,7 +145,7 @@ header #logo-with-text{
     background-color:var(--darkGrey) !important;
     color: white;
 }
-#signInBtn, .connexion, #signOutBtn , #rechercher{
+#signInBtn, .connexion, #signOutBtn{
     background-color: var(--bleu)   !important  ;
     color: white;
 }
