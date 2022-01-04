@@ -26,7 +26,15 @@
     <section class="main-image" id="second-section">
         
         <h2>Des centaines de films séléctionnés pour vous</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste similique saepe officiis impedit illo, ducimus minus quisquam iusto fugiat. Quo dolores nihil omnis, voluptatem itaque eum quisquam quaerat commodi temporibus?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla suscipit, leo quis vehicula pulvinar, nulla nisi lacinia massa, eu iaculis magna metus sit amet felis. Integer quam ligula, gravida a mollis eu, mattis non arcu. Etiam sollicitudin velit felis, id tincidunt massa porttitor eu. Donec in nunc velit. Nulla accumsan tristique purus, eget scelerisque eros consequat quis. Suspendisse fermentum laoreet felis, in tempus justo rutrum rutrum. Nunc ac magna laoreet, scelerisque diam ac, maximus tellus. Curabitur ipsum quam, bibendum nec libero at, vulputate efficitur dui. <br>
+
+Nunc interdum bibendum imperdiet. Nam quis porta ligula. Donec pulvinar nisi eget arcu maximus tempor. Quisque eget tellus eget lorem bibendum malesuada ultricies quis risus. Phasellus lacus sem, tincidunt nec felis at, elementum imperdiet odio. Vestibulum laoreet fermentum felis id convallis. Sed faucibus eros ac nunc tristique, quis euismod ex commodo. Fusce ac dolor sit amet dui maximus faucibus. Cras at fermentum diam. Etiam sagittis aliquam sodales. Praesent at varius sem, nec elementum diam. Nunc quam nulla, consectetur a orci non, mattis convallis turpis. Fusce a aliquam risus, id tristique magna. Aenean mattis libero in magna consequat condimentum. Fusce a justo vestibulum, imperdiet nunc et, cursus felis.<br>
+
+Quisque commodo ullamcorper nunc, et viverra massa volutpat tincidunt. Phasellus sagittis eros a est consectetur venenatis. Aliquam sodales nisi leo, at accumsan justo pretium eu. Aenean congue purus ac nisi finibus, nec aliquam dui porttitor. Etiam id congue ex, a porttitor dolor. Nullam maximus nulla consectetur vulputate sodales. Maecenas dolor mi, consectetur vel urna sed, semper venenatis libero. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam gravida nisi eget luctus blandit. Duis interdum mollis elit, vitae sagittis neque vehicula in. Sed pretium ac nibh ac tempus. Sed rhoncus at erat a rhoncus. Maecenas tellus velit, varius non mattis a, molestie in urna.<br>
+
+Nulla finibus lobortis nulla a consectetur. Phasellus ut bibendum sem. In commodo sem sit amet purus commodo, in aliquet elit vehicula. Donec tempor lobortis maximus. Cras eget sem facilisis, cursus massa ac, dignissim eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam ut sodales magna. Duis dapibus et justo ac dictum.<br>
+
+Donec quis purus tristique, interdum velit sed, imperdiet tellus. Ut fermentum id nibh eu varius. Sed augue neque, ultricies sed laoreet vitae, viverra non turpis. In scelerisque, lacus eget elementum pellentesque, justo libero ullamcorper urna, ut feugiat sapien augue ut ipsum. In sed arcu vel mi volutpat viverra. Nulla ultrices lorem ligula, vel scelerisque mauris scelerisque eget. Phasellus suscipit lorem sapien, ac auctor magna vestibulum et.</p>
     </section>
     <section class="main-image" id="third-section">
         <h2>Un accès partout, tout le temps</h2>
