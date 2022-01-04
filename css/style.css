@@ -78,12 +78,23 @@ header{
 }
 
 #search-bar-container {
-    justify-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
 }
 
 #search-bar {
-    margin-bottom: 0;
-    margin-left: 2em;
+    margin: 0 2em;
+    width: 100%;
+}
+
+#rechercher {
+    width: auto;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 header img, #menu-toogle {
@@ -128,7 +139,7 @@ header #logo-with-text{
     background-color:var(--darkGrey) !important;
     color: white;
 }
-#signInBtn, .connexion, #signOutBtn{
+#signInBtn, .connexion, #signOutBtn , #rechercher{
     background-color: var(--bleu)   !important  ;
     color: white;
 }
