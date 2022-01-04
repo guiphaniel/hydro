@@ -49,7 +49,7 @@ function showFilmDetails(idMovie, title, year, genres) {
                     <div id="movie-details">
                         <div id="movie">                                
                             <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
-                            <div id="start-button"></div>
+                            <div id="start-button" class="button" onclick="playMovie('${window.encodeURIComponent(movieInfo.title) + "film bande annonce"}')">Regarder</div>
                         </div>
                         <div id="details">
                             <h2 class="movie-title">${movieInfo.title}</h2>
@@ -118,6 +118,18 @@ function showMovie(htmlId, title, year) {
             <figcaption>${movieInfo.title} <br> ${year}</figcaption>
         `;
     });
+}
+
+function playMovie(title){
+    let youtube_API_key = "AIzaSyAW39vDkJUI95mQVE0b0w_rfP2pHpzmkQA";
+    let fetchUrl = "https://www.googleapis.com/youtube/v3/search?key=" + youtube_API_key + "&q=" + title;
+
+    fetch(fetchUrl).then(res => res.json()).then(data => { 
+        let videoId = data.items[0].id.videoId;        
+        let videoUrl = "https://www.youtube.com/embed/" + videoId;
+
+        window.open(videoUrl, '_blank').focus();
+    })
 }
 
 function setUserRating(starID) { //onclick, set rating and display it

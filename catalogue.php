@@ -55,7 +55,7 @@
                         <div id="movie-details">
                             <div id="movie">                                
                                 <img src="img/default-illustration.jpg" alt="default-illustration">
-                                <div id="start-button"></div>
+                                <div id="start-button" class="button">Regarder</div>
                             </div>
                             <div id="details">
                                 <h2 class="movie-title">Titre</h2>
@@ -71,7 +71,6 @@
                                 <p>Description</p>
                                 <p id="genres">Genres</p>
                                 <div id="actors">
-        
                                 </div>
                             </div>
                         </div>
