@@ -40,9 +40,13 @@ header{
     background-color: var(--grey);
     min-height: 90px;
     justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 #menu-toogle:not(:checked) ~.accountButtons{
-    height: 0;
+    height: 0px;
 
     visibility: hidden;
     opacity: 0;
@@ -59,18 +63,29 @@ header{
 
 .accountButtons{
     display: flex;
-
+    padding: 0 2em;
     flex-direction: column;
     align-items: center;
     list-style: none;
     visibility: visible;
-    opacity: 1;
-    width: 100vw;
-    height: 350px;
+    opacity: 100%;
+    margin: auto;
     transition:opacity 1s, height 1s, visibility 1s;
-    
-    
 }
+
+#logo-search {
+    display: flex;
+}
+
+#search-bar-container {
+    justify-content: center;
+}
+
+#search-bar {
+    margin-bottom: 0;
+    margin-left: 2em;
+}
+
 header img, #menu-toogle {
     height: 70px;
     margin: 10px;
@@ -126,6 +141,17 @@ header #logo-with-text{
 header a{
     text-decoration: none;
 }
+
+#content h1 {
+    font-size: 3em;
+    margin-left: 2vw;
+}
+
+#content h2 {
+    font-size: 2em;
+    margin-left: 2vw;
+}
+
 .modal {
     
 position: fixed; /* Stay in place */
@@ -448,10 +474,11 @@ footer a{
 @media (min-width: 800px) {
     /*     HEADER     */
     header{
-    background-color: #C4C4C4;
-    display: flex;
-    transition: none;
-    justify-content: space-between;
+        background-color: #C4C4C4;
+        display: flex;
+        transition: none;
+        justify-content: space-between;
+        flex-wrap: nowrap;
     }
 
     .accountButtons{
@@ -460,11 +487,10 @@ footer a{
         justify-content: end;
         flex-direction: row;
         visibility: visible !important;
-        
         opacity: 1 !important;
         height: 90px !important;
         transition: none;
-
+        margin: 0;
     }
     
     header .accountButtons #signInBtn{

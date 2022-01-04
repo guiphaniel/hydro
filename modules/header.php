@@ -1,9 +1,24 @@
 <header>
     
-    <input type="checkbox" id="menu-toogle" for="toogle"/>
-    <a href="./index.php"><img id="logo-with-text" for="toogle" src="./img/LogoSombreTexte.png" alt="logo Hydro with text"></a>
-    <img id="logo-without-text" for="toogle" src="./img/LogoSombre.svg" alt="logo Hydro">
     
+        <input type="checkbox" id="menu-toogle" for="toogle"/>
+        <a href="./index.php"><img id="logo-with-text" for="toogle" src="./img/LogoSombreTexte.png" alt="logo Hydro with text"></a>
+        <img id="logo-without-text" for="toogle" src="./img/LogoSombre.svg" alt="logo Hydro">
+        
+        <?php
+            if(isset($_SESSION['user'])):
+        ?>
+
+        <form id="search-bar-container" action="search.php" method="get">
+            <input type="text" name="movie" id="search-bar">
+        </form>
+
+        <?php
+            endif;
+        ?>
+    
+    
+
     <ul id="menu"class="accountButtons">        
         <?php 
         if(empty($_SESSION['user'])){
