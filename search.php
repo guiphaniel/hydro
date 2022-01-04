@@ -32,6 +32,8 @@
                         $requete .= "SELECT idMovie from movies where title like '%" . $keywords[$i] . "%'";
                         if($i < sizeof($keywords) - 1)
                             $requete .= " intersect ";
+                        else
+                            $requete .= " limit 100";
                     }
 
                     $sql = $pdo->prepare($requete);
