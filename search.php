@@ -1,9 +1,10 @@
 <?php session_start(); 
-    if (!isset($_SESSION['user'])) {
-        header('location: index.php');
+    if (!isset($_SESSION['user']) || !isset($_GET["movie"])) {
+        header('location: catalogue.php');
         exit();
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,36 +19,48 @@
     <?php include_once "modules/header.php"?>
     <main>
         <div id="content">
-            <h1>Catalogue</h1>
-            <h2>Recommendations</h2>
+            <h1>Resultats</h1>
             <section id="movie-tile-wrapper">
                 <?php
                     include "include/start-db.php";
+                    
+                    $requete = "";
 
-                    $sql = $pdo->prepare("SELECT * from userRecommendations where idUser = :id");
-                    $sql->execute([
-                        "id" => $_SESSION['user']['id']
-                    ]);
+                    $keywords = explode(' ', $_GET["movie"]);
+
+                    for ($i=0; $i < sizeof($keywords); $i++) { 
+                        $requete .= "SELECT idMovie from movies where title like '%" . $keywords[$i] . "%'";
+                        if($i < sizeof($keywords) - 1)
+                            $requete .= " intersect ";
+                    }
+
+                    $sql = $pdo->prepare($requete);
                     $sql->setFetchMode(PDO::FETCH_NUM);
-                
-                    foreach($sql->fetch() as $col => $movieId):
-                        if ($col == 0)  //la premiere colonne correspond à l'id de l'utilisateur
-                            continue;
-                        $sql = $pdo->prepare("SELECT title, year, genres from movies where idMovie = $movieId limit 1");
-                        $sql->execute();
-                        $sql->setFetchMode(PDO::FETCH_DEFAULT);
-                        $result = $sql->fetch();
-                        $movieTitle = $result['title'];
-                        $movieYear = $result['year'];
-                        $movieGenres = $result['genres'];                       
-                        ?>
-                            <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=addslashes($movieTitle)?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
-                                <img src="img/default-illustration.jpg" alt="<?=$movieTitle?>">
-                                <figcaption><?=$movieTitle?> <br> <?=$movieYear?></figcaption>
-                            </figure>   
-                            <script>showMovie("movie<?=$movieId?>", "<?=$movieTitle?>", "<?=$movieYear?>");</script>                                                   
-                        <?php
-                    endforeach;
+                    $sql->execute();
+                    
+                    $movies = $sql->fetchAll();
+                    
+                    if(sizeof($movies) > 0) { //s'il y a au moins un film qui correspond à la requete
+                        foreach($movies as $row):
+                            $movieId = $row[0];
+                            $sql = $pdo->prepare("SELECT title, year, genres from movies where idMovie = $movieId limit 1");
+                            $sql->execute();
+                            $sql->setFetchMode(PDO::FETCH_DEFAULT);
+                            $result = $sql->fetch();
+                            $movieTitle = $result['title'];
+                            $movieYear = $result['year'];
+                            $movieGenres = $result['genres'];                       
+                            ?>
+                                <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=addslashes($movieTitle)?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
+                                    <img src="img/default-illustration.jpg" alt="<?=$movieTitle?>">
+                                    <figcaption><?=$movieTitle?> <br> <?=$movieYear?></figcaption>
+                                </figure>   
+                                <script>showMovie("movie<?=$movieId?>", "<?=$movieTitle?>", "<?=$movieYear?>");</script>                                                   
+                            <?php
+                        endforeach;
+                    } else {
+                        echo "<h3>Nous sommes désolé, nous ne disposons pas de ce film, essayez en un autre ! ^^<h3>";
+                    }
                 ?>
                 <div id="movie-details-container" class="movie-details-container">
                     <div id="movie-details-background" onclick="closeFilmDetails()"></div>
