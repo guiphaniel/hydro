@@ -414,6 +414,7 @@ footer ul li{
 .movie-title {
     font-size: 2.5em;
     margin-bottom: 0.2em;
+    margin-left: 0 !important;
 }
 
 .movie-year {
