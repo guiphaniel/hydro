@@ -18,7 +18,8 @@
     <?php include_once "modules/header.php"?>
     <main>
         <div id="content">
-            <nav></nav>
+            <h1>Catalogue</h1>
+            <h2>Recommendations</h2>
             <section id="movie-tile-wrapper">
                 <?php
                     include "include/start-db.php";
