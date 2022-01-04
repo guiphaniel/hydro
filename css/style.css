@@ -153,6 +153,10 @@ header a{
     text-decoration: none;
 }
 
+#content {
+    min-height: 77vh;
+}
+
 #content h1 {
     font-size: 3em;
     margin-left: 2vw;
