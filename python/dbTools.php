@@ -20,16 +20,6 @@ function startResetMovieDB(){
     }
 }
 
-function startComputeAverageRatings(){
-    $cmd = "computeAverageRatings.py " .__DIR__;
-    if (str_starts_with(php_uname(), "Windows")){
-        pclose(popen("start /B ". $cmd, "r"));
-    }
-    else {
-        exec($cmd . " > /dev/null &");
-    }
-}
-
 function startResetDBRatings(){
     $cmd = "resetRatingsDB.py " .__DIR__;
     if (str_starts_with(php_uname(), "Windows")){
@@ -49,7 +39,4 @@ function connectResultsDB(): ?PDO
     }
 }
 
-startResetDBRatings();
-startResetMovieDB();
 startUsersRecommendations();
-startComputeAverageRatings();

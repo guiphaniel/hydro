@@ -1,5 +1,6 @@
-import csv
 try:
+    import os
+    import csv
     import sys
     sys.path.append(sys.argv[1] + "\lib\site-packages")
     from collections import defaultdict
@@ -23,7 +24,21 @@ def get_top_n(predictions, n=10):
 
 if __name__ == '__main__':
 
+    con = sqlite3.connect("../database.db")
+    cur = con.cursor()
+
     file_path = "csv/ratings.csv"
+
+    os.remove(file_path)
+    csvfile = open(file_path, 'w', newline='')
+    writer = csv.writer(csvfile)
+
+    cur.execute("SELECT * FROM ratings")
+    rows = cur.fetchall()
+
+    for row in rows:
+        writer.writerow(row)
+
     reader = Reader(line_format='user item rating timestamp', sep=',')
     data = Dataset.load_from_file(file_path, reader=reader)
 
@@ -36,8 +51,7 @@ if __name__ == '__main__':
 
     top_n = get_top_n(predictions, 10)
 
-    con = sqlite3.connect("../database.db")
-    cur = con.cursor()
+
     cur.execute("DROP TABLE IF EXISTS userRecommendations;")
     cur.execute("CREATE TABLE userRecommendations (idUser int, idFilm1 int, idFilm2 int, idFilm3 int, idFilm4 int, idFilm5 int, idFilm6 int, idFilm7 int, idFilm8 int, idFilm9 int, idFilm10 int, CONSTRAINT PK_userRecommandation PRIMARY KEY (idUser));")
 
