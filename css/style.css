@@ -161,15 +161,18 @@ header a{
 
 #content {
     min-height: 77vh;
+    background-color: var(--darkGrey);
 }
 
 #content h1 {
     font-size: 3em;
+    color: white;
     margin-left: 2vw;
 }
 
 #content h2 {
     font-size: 2em;
+    color : white;
     margin-left: 2vw;
 }
 
@@ -337,6 +340,7 @@ footer ul li{
 
 .movie-tile figcaption {
     text-align: center;
+    color: white;
     padding: 1em 1em;
 }
 
@@ -434,6 +438,7 @@ footer ul li{
 
 .movie-title {
     font-size: 2.5em;
+    color : black !important;
     margin-bottom: 0.2em;
     margin-left: 0 !important;
 }
