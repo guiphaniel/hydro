@@ -49,7 +49,7 @@ function showFilmDetails(idMovie, title, year, genres) {
                     <div id="movie-details">
                         <div id="movie">                                
                             <img src="${IMG_URL+movieInfo.poster_path}" alt="${movieInfo.title}">
-                            <div id="start-button" class="button" onclick="playMovie('${window.encodeURIComponent(movieInfo.title) + "film bande annonce"}')">Regarder</div>
+                            <div id="start-button" class="button" onclick="playMovie('${window.escape(movieInfo.title) + "film bande annonce"}')">Regarder</div>
                         </div>
                         <div id="details">
                             <h2 class="movie-title">${movieInfo.title}</h2>
