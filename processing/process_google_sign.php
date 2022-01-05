@@ -7,14 +7,17 @@
         echo 'Connexion échouée : '.$e->getMessage();
 
     }
-    
+    if(empty($_POST)||empty(['idtoken'])){
+        header("location: ../index.php");
+        exit();
+    }
     $json = file_get_contents('https://oauth2.googleapis.com/tokeninfo?id_token='.$_POST['idtoken']);
     
     // decode the json data
     $payload = json_decode($json, true);
-    var_dump($payload);
+    
     $userid= $payload['sub'];
-    var_dump($userid);
+    
 
 
 
