@@ -28,7 +28,7 @@
             
         }
         if($user){
-            $_SESSION['errorSignIn']="Vous pouvez maintenant vous connecter";
+            $_SESSION['errorSignUp']="L'adresse mail exite déjà";
             header("location: ../index.php");
             die();
         } 
@@ -40,8 +40,9 @@
                 'username' => $_POST['username'],
                 'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
             ]);
-
+            $_SESSION['errorSignIn']="Vous pouvez maintenant vous connecter";
             header("location: ../index.php");
+            die();
         }
         catch(PDOException $Exception){
             echo $Exception->getMessage( ) . ' code erreur : ' . $Exception->getCode( );
