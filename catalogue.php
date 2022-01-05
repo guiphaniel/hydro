@@ -29,25 +29,31 @@
                         "id" => $_SESSION['user']['id']
                     ]);
                     $sql->setFetchMode(PDO::FETCH_NUM);
-                
-                    foreach($sql->fetch() as $col => $movieId):
-                        if ($col == 0)  //la premiere colonne correspond à l'id de l'utilisateur
-                            continue;
-                        $sql = $pdo->prepare("SELECT title, year, genres from movies where idMovie = $movieId limit 1");
-                        $sql->execute();
-                        $sql->setFetchMode(PDO::FETCH_DEFAULT);
-                        $result = $sql->fetch();
-                        $movieTitle = $result['title'];
-                        $movieYear = $result['year'];
-                        $movieGenres = $result['genres'];                       
-                        ?>
-                            <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=addslashes($movieTitle)?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
-                                <img src="img/default-illustration.jpg" alt="<?=$movieTitle?>">
-                                <figcaption><?=$movieTitle?> <br> <?=$movieYear?></figcaption>
-                            </figure>   
-                            <script>showMovie("movie<?=$movieId?>", "<?=$movieTitle?>", "<?=$movieYear?>");</script>                                                   
-                        <?php
-                    endforeach;
+
+                    $recommendation = $sql->fetch();
+                    if($recommendation != false) {
+                        foreach($recommendation as $col => $movieId):
+                            if ($col == 0)  //la premiere colonne correspond à l'id de l'utilisateur
+                                continue;
+                            $sql = $pdo->prepare("SELECT title, year, genres from movies where idMovie = $movieId limit 1");
+                            $sql->execute();
+                            $sql->setFetchMode(PDO::FETCH_DEFAULT);
+                            $result = $sql->fetch();
+                            $movieTitle = $result['title'];
+                            $movieYear = $result['year'];
+                            $movieGenres = $result['genres'];                       
+                            ?>
+                                <figure id="movie<?=$movieId?>" class="movie-tile" onclick="showFilmDetails('<?=$movieId?>', '<?=addslashes($movieTitle)?>', '<?=$movieYear?>', '<?=$movieGenres?>')">
+                                    <img src="img/default-illustration.jpg" alt="<?=$movieTitle?>">
+                                    <figcaption><?=$movieTitle?> <br> <?=$movieYear?></figcaption>
+                                </figure>   
+                                <script>showMovie("movie<?=$movieId?>", "<?=$movieTitle?>", "<?=$movieYear?>");</script>                                                   
+                            <?php
+                        endforeach;
+                    } else {
+                        echo '<h3 id="movie-not-found">Nous sommes désolés, nous ne disposons pas assez d\'informations vous concernant pour vous recommander des films !</h3>';
+                    }
+                    
                 ?>
                 <div id="movie-details-container" class="movie-details-container">
                     <div id="movie-details-background" onclick="closeFilmDetails()"></div>
