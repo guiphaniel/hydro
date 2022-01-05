@@ -10,7 +10,7 @@
         ?>
 
         <form id="search-bar-container" action="search.php" method="get">
-            <input type="text" name="movie" id="search-bar" placeholder="Rechercher">
+            <input type="text" name="movie" id="search-bar" placeholder="Rechercher" required>
             <button class="button" id="rechercher" type="submit">Rechercher</button>
         </form>
 
