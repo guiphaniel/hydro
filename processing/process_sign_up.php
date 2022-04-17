@@ -28,7 +28,7 @@
             
         }
         if($user){
-            $_SESSION['errorSignIn']="Vous pouvez maintenant vous connecter";
+            $_SESSION['errorSignUp']="Cette adresse mail est déjà utilisée";
             header("location: ../index.php");
             die();
         } 
@@ -41,6 +41,7 @@
                 'password' => password_hash($_POST['password'], PASSWORD_DEFAULT)
             ]);
 
+            $_SESSION['errorSignIn']="Vous pouvez maintenant vous connecter";
             header("location: ../index.php");
         }
         catch(PDOException $Exception){
