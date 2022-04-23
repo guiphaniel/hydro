@@ -5,7 +5,7 @@
 ## Description du projet
 
 ### Résumé
-Ce projet a été réalisé dans le cadre de nos études à l'IUT Lyon 1 - Département Informatique (site de Bourg-en-Bresse), au cours du module `Méthodologie`. Il avait pour objectif la création d'une plateforme de streaming vidéo.
+Ce projet a été réalisé dans le cadre de nos études en deuxième année à l'IUT Lyon 1 - Département Informatique (site de Bourg-en-Bresse), au cours du module `Méthodologie`. Il avait pour objectif la création d'une plateforme de streaming vidéo.
 
 ### Fonctionnalités
 
